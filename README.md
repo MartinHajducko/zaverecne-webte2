@@ -1,1 +1,3 @@
-# zaverecne-webte2
+# Záverečné zadanie 
+## WEBTE2
+## LS 2022/2023
