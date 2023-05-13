@@ -34,7 +34,7 @@
               <a class="nav-link" href="#">Hra</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Prihlásenie</a>
+              <a class="nav-link" href="login.php">Prihlásenie</a>
             </li>
           </ul>
         </div>
