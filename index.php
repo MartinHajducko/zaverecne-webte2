@@ -41,8 +41,7 @@
       </div>
     </nav>
   </header>
-  <button onclick="translateToEnglish()">Preložiť do angličtiny</button>
-  <button onclick="translateToSlovak()">Preložiť do slovenčiny</button>
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://apis.google.com/js/api.js"></script>
