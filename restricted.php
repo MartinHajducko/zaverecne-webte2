@@ -246,71 +246,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
           text-align: center;
         }
       </style>
-      <?php
+     
 
-
-      require_once('config.php');
-
-      //var_dump($_POST["person_id"]);
-
-      try {
-        $db = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        if (!empty($_POST) && isset($_POST['del_person_id'])) {
-          $del = "DELETE FROM person WHERE id=?";
-          $stmt_del = $db->prepare($del);
-          $stmt_del->execute([intval($_POST['del_person_id'])]);
-        }
-        $query = "SELECT * FROM person";
-        $stmt = $db->query($query);
-        $persons = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      } catch (PDOException $e) {
-        echo $e->getMessage();
-      }
-
-      if (!empty($_POST) && !empty($_POST['name'])) {
-
-        $sql = "INSERT INTO person (name, surname, birth_day, birth_place, birth_country) VALUES (?,?,?,?,?)";
-        $stmt = $db->prepare($sql);
-        $success = $stmt->execute([$_POST['name'], $_POST['surname'], $_POST['birth_day'], $_POST['birth_place'], $_POST['birth_country']]);
-      }
-
-
-
-      ?>
-
-
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
-
-      <script src="js/truncate.js"></script>
-
-      <div class="container-md">
-
-        <div class="container-md">
-
-          <div class="container">
-
-
-
-            <script>
-              document.getElementById("alert2").addEventListener("submit", function(event) {
-                event.preventDefault(); // zamedzi odoslaniu formulára klasickým spôsobom
-
-                // tu by bolo možné pridať ďalšie overenie formulára pomocou JavaScriptu
-
-                // odoslať formulár pomocou AJAX
-                var xhr = new XMLHttpRequest();
-                xhr.open(this.method, this.action, true);
-                xhr.onreadystatechange = function() {
-                  if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                    // zobraz upozornenie pomocou SweetAlert
-                    Swal.fire("Super!", "Formulár bol úspešne odoslaný.", "success");
-                  }
-                };
-                xhr.send(new FormData(this));
-              });
-            </script>
 
 
   </main>
