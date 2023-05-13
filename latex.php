@@ -63,11 +63,13 @@ try {
 
     require_once('config.php');
 
+    
+
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Read and process the LaTeX file
-    $latexPath = 'odozva02pr.tex';
+    $latexPath = '/var/www/site112.webte.fei.stuba.sk/jedalne/zaverecne-zadanie/.vscode/odozva02pr.tex';
     $latexContent = file_get_contents($latexPath);
     $latexName = basename($latexPath);
 
@@ -101,12 +103,17 @@ try {
                 $solutionEquation = $solutionEquationMatches[1];
                 // Process the equations as needed
 
+                $date = '2023-05-25';
+
+                echo $date;
+
                 // Insert the task and solution into the database
-                $sql = "INSERT INTO equation (task, solution, latexFile) VALUES (:task, :solution, :latexFile)";
+                $sql = "INSERT INTO equation (task, solution, latexFile, date) VALUES (:task, :solution, :latexFile, :date)";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':task', $taskEquation);
                 $stmt->bindParam(':solution', $solutionEquation);
                 $stmt->bindParam(':latexFile', $latexName);
+                $stmt->bindParam(':date', $date);
                 $stmt->execute();
 
                 // Process the image files

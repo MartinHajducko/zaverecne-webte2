@@ -1,7 +1,9 @@
-<?php 
-$hostname = "localhost";
-$username = "xtankos";
-$password = "53dHnHr7qeHHacH";
-$dbname = "zadanie5";
+<?php
+
+// Step 1: Define database connection details
+$hostname = 'localhost';
+$dbname = 'mathematics';
+$username = 'xjencikt';
+$password = 'qYmiPKXjvx45wBr'
 
 ?>
