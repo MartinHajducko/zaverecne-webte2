@@ -22,6 +22,7 @@
   --global-dark-blue: rgb(10, 10, 60);
   --global-golden: rgb(220, 160, 30);
   --global-alert: rgb(200, 30, 30);
+  --global-grey: rgb(240, 240, 240);
 
   --global-large: 40px;
   --global-larger: 34px;
@@ -36,7 +37,7 @@
   padding: 0;
 
   font-size: var(--global-smaller);
-  font-weight: 200;
+  font-weight: 300;
   word-spacing: 2px;
   letter-spacing: 1.5px;
   font-family: 'Barlow', sans-serif;
@@ -76,6 +77,15 @@ body {
 }
 
 /* HEADER */
+.page-header {
+  height: 10vh;
+  background-color: var(--global-golden);
+}
+
+.page-navbar {
+  background-color: var(--global-golden) !important;
+}
+
 .nav-link {
-  color: var(--global-golden) !important;
+  color: var(--global-grey);
 }
