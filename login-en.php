@@ -1,6 +1,4 @@
 <?php
-
-
 session_start();
 require_once 'client/vendor/autoload.php';
 require_once 'config.php';
@@ -291,7 +289,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
     </div>
   </nav>
-
 
   <div class="signup-form">
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">

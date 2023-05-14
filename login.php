@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'vendor/autoload.php';
+require_once 'client/vendor/autoload.php';
 require_once 'config.php';
 
 $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
@@ -289,6 +289,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
     </div>
   </nav>
+
   <div class="signup-form">
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
       <h2>Prihlásenie</h2>
@@ -345,9 +346,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ak som prihlaseny, existuje session premenna.
     if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
       // Vypis relevantne info a uvitaciu spravu.
-      echo '<p class="text-center"><a role="button" href="restricted.php">Zabezpečená stránka</a>';
+      echo '<p class="text-center"><a role="button" href="./restricted.php">Zabezpečená stránka</a>';
       echo '<br>';
-      echo '<a role="button" class="text-center" href="logout.php">Odhlás ma.</a></p>';
+      echo '<a role="button" class="text-center" href="./logout.php">Odhlás ma.</a></p>';
     } else {
       // Ak nie som prihlaseny, zobraz mi tlacidlo na prihlasenie.
       echo '<div class = "text-center"<p><a role="button" href="' . filter_var($auth_url, FILTER_SANITIZE_URL) . '">Prihláste sa pomocou Google účtu.</a></p></div>';
