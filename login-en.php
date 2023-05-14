@@ -90,6 +90,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <style>
     @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
+    .language-switcher {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      column-gap: 20px;
+    }
+
+    @media screen and (max-width: 1200px) {
+      .language-switcher {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        margin-top: 10px;
+        column-gap: 20px;
+      }
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -286,6 +306,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <li><a href="./register-en.php"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
           <li class="active"><a href="./login-en.php"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
         </ul>
+        <div class="language-switcher nav navbar-nav">
+          <a href="./login.php" class="language-flag"><img src="https://flagcdn.com/40x30/sk.png" alt="Slovak"></a>
+          <a href="./login-en.php" class="language-flag"><img src="https://flagcdn.com/40x30/gb.png" alt="English"></a>
+        </div>
       </div>
     </div>
   </nav>
