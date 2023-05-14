@@ -1,8 +1,6 @@
 <?php
-
-
 session_start();
-require_once 'client/vendor/autoload.php';
+require_once 'vendor/autoload.php';
 require_once 'config.php';
 
 $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
