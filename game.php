@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="./client/src/styles/styles.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
-  <title>Tímový projekt</title>
+  <title>Hra</title>
 </head>
 
 <body>
@@ -28,10 +28,10 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item mr-5">
-              <a class="nav-link" href="#">Domov</a>
+              <a class="nav-link" href="./index.php">Domov</a>
             </li>
             <li class="nav-item mr-5">
-              <a class="nav-link" href="./game.php">Hra</a>
+              <a class="nav-link" href="#">Hra</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./login.php">Prihlásenie</a>
@@ -39,8 +39,8 @@
           </ul>
         </div>
         <div class="language-switcher">
-          <a href="./index.php" class="language-flag"><img src="https://flagcdn.com/48x36/sk.png" alt="Slovak"></a>
-          <a href="./index-en.php" class="language-flag"><img src="https://flagcdn.com/48x36/gb.png" alt="English"></a>
+          <a href="./game.php" class="language-flag"><img src="https://flagcdn.com/48x36/sk.png" alt="Slovak"></a>
+          <a href="./game-en.php" class="language-flag"><img src="https://flagcdn.com/48x36/gb.png" alt="English"></a>
         </div>
       </div>
     </nav>
@@ -51,8 +51,7 @@
   <script src="https://apis.google.com/js/api.js"></script>
 
   <main class=page-wrapper>
-    <h1 class="page-title">Samo Tomáš Hajdy Kubo</h1>
-    <p id="text-to-translate">Vitajte na stránke</p>
+    <h1 class="page-title">HRA</h1>
   </main>
 
 </body>

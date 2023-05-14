@@ -78,14 +78,18 @@ body {
 
 /* HEADER */
 .page-header {
-  height: 10vh;
   background-color: var(--global-golden);
 }
 
 .page-navbar {
-  background-color: var(--global-golden) !important;
+  background-color: var(--global-golden);
 }
 
 .nav-link {
   color: var(--global-grey);
+}
+
+.language-switcher {
+  position: absolute;
+  right: 5%;
 }

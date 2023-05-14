@@ -15,7 +15,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     $surname = $_SESSION['surname'];
   } else {
     // Ak pouzivatel prihlaseny nie je, presmerujem ho na hl. stranku.
-    header('Location: index.php');
+    header('Location: ./index-en.php');
     exit;
   }
 }
@@ -53,11 +53,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Olympic games</a>
+        <a class="navbar-brand" href="#">Team project</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Domov</a></li>
+          <li><a href="index-en.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
           <li class="dropdown">
 
 
@@ -66,7 +66,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         </ul>
         <ul class="nav navbar-nav navbar-right">
 
-          <li class="active"><a href="logout.php"><span class="glyphicon glyphicon-user"></span> Odhlásenie</a></li>
+          <li class="active"><a href="logout-en.php"><span class="glyphicon glyphicon-user"></span> Loggout</a></li>
 
         </ul>
       </div>
@@ -96,7 +96,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
               <div class="card-text">
 
                 <p class="ellipsis">
-                <h2 class="nazov">Vitaj <?php echo $_SESSION['fullname']; ?></h2>
+                <h2 class="nazov">Welcome <?php echo $_SESSION['fullname']; ?></h2>
                 <br>
                 <p class="text">
                 </p>
@@ -118,13 +118,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Uživateľ <?php echo $_SESSION['login']; ?></h4>
+                    <h4 class="modal-title">User <?php echo $_SESSION['login']; ?></h4>
                   </div>
                   <div class="modal-body">
 
-                    <p class="text1"><strong>Si prihlaseny pod emailom:</strong> <?php echo $_SESSION['email']; ?></p>
-                    <p class="text1"><strong>Tvoje prihlasovacie meno je:</strong> <?php echo $_SESSION['login']; ?></p>
-                    <p class="text1"><strong>Dátum registracie konta:</strong> <?php echo $_SESSION['created_at'] ?></p>
+                    <p class="text1"><strong>Your login email:</strong> <?php echo $_SESSION['email']; ?></p>
+                    <p class="text1"><strong>Your username</strong> <?php echo $_SESSION['login']; ?></p>
+                    <p class="text1"><strong>Registration date:</strong> <?php echo $_SESSION['created_at'] ?></p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Zavrieť</button>
@@ -243,13 +243,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
           text-align: center;
         }
       </style>
-     
+
 
 
 
   </main>
   <div class="footer">
-    <p>Prihlásený: <?php echo $_SESSION['fullname']; ?></p>
+    <p>Logged: <?php echo $_SESSION['fullname']; ?></p>
   </div>
 </body>
 

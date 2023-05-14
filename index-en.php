@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="./client/src/styles/styles.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
-  <title>Tímový projekt</title>
+  <title>Team project</title>
 </head>
 
 <body>
@@ -28,13 +28,13 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item mr-5">
-              <a class="nav-link" href="#">Domov</a>
+              <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item mr-5">
-              <a class="nav-link" href="./game.php">Hra</a>
+              <a class="nav-link" href="./game-en.php">Game</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./login.php">Prihlásenie</a>
+              <a class="nav-link" href="./login-en.php">Login</a>
             </li>
           </ul>
         </div>
@@ -52,7 +52,7 @@
 
   <main class=page-wrapper>
     <h1 class="page-title">Samo Tomáš Hajdy Kubo</h1>
-    <p id="text-to-translate">Vitajte na stránke</p>
+    <p id="text-to-translate">Welcome</p>
   </main>
 
 </body>

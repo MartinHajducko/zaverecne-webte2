@@ -9,7 +9,7 @@ $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
 // Check if the user is already logged in, if yes then redirect him to welcome page
 
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-  header("location: restricted.php");
+  header("location: restricted-en.php");
   exit;
 }
 
@@ -48,18 +48,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $_SESSION["created_at"] = $row['created_at'];
 
           // Presmeruj pouzivatela na zabezpecenu stranku.
-          header("location: restricted.php");
+          header("location: restricted-en.php");
         } else {
-          echo "<script>alert('2FA kód nesprávny')</script>";
+          echo "<script>alert('2FA code incorrect')</script>";
         }
       } else {
-        echo "<script>alert('Nesprávne meno alebo heslo.')</script>";
+        echo "<script>alert('Invalid username or password')</script>";
       }
     } else {
-      echo "<script>alert('Nesprávne meno alebo heslo.')</script>";
+      echo "<script>alert('Invalid username or password')</script>";
     }
   } else {
-    echo "Ups. Nieco sa pokazilo!";
+    echo "Oops, something went wrong.";
   }
 
 
@@ -74,14 +74,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-  <title>Prihlásenie</title>
+  <title>Login</title>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
@@ -277,48 +277,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Názov</a>
+        <a class="navbar-brand" href="#">Title</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="./index.php"><span class="glyphicon glyphicon-home"></span> Domov</a></li>
+          <li><a href="./index-en.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
           <li class="dropdown"></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="./register.php"><span class="glyphicon glyphicon-user"></span> Registrácia</a></li>
-          <li class="active"><a href="./login.php"><span class="glyphicon glyphicon-log-in"></span> Prihlásenie</a></li>
+          <li><a href="./register-en.php"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+          <li class="active"><a href="./login-en.php"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
         </ul>
       </div>
     </div>
   </nav>
+
+
   <div class="signup-form">
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-      <h2>Prihlásenie</h2>
+      <h2>Login</h2>
       <p class="hint-text"></p>
       <div class="form-group"></div>
       <div class="form-group">
         <label for="login">
-          Prihlasovacie meno:
+          Username:
           <input type="text" class="form-control" name="login" value="" id="login" required>
         </label>
       </div>
       <div class="form-group">
         <label for="password">
-          Heslo:
+          Password:
           <input type="password" class="form-control" name="password" value="" id="password" required>
         </label>
       </div>
       <div class="form-group">
         <label for="2fa">
-          2FA kod:
+          2FA code:
           <input type="password" class="form-control" name="2fa" value="" id="2fa" required>
         </label>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-success btn-lg btn-block">Prihlás sa</button>
+        <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
       </div>
-      <div class="text-center">Nemáš ešte vytvorený účet?
-        <a href="./register.php">Registrácia</a>
+      <div class="text-center">Don't have an account yet?
+        <a href="./register.php">Sign up</a>
       </div>
     </form>
 
@@ -347,12 +349,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ak som prihlaseny, existuje session premenna.
     if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
       // Vypis relevantne info a uvitaciu spravu.
-      echo '<p class="text-center"><a role="button" href="restricted.php">Zabezpečená stránka</a>';
+      echo '<p class="text-center"><a role="button" href="./restricted-en.php">Secured site.</a>';
       echo '<br>';
-      echo '<a role="button" class="text-center" href="logout.php">Odhlás ma.</a></p>';
+      echo '<a role="button" class="text-center" href="./logout-en.php">Logout.</a></p>';
     } else {
       // Ak nie som prihlaseny, zobraz mi tlacidlo na prihlasenie.
-      echo '<div class = "text-center"<p><a role="button" href="' . filter_var($auth_url, FILTER_SANITIZE_URL) . '">Prihláste sa pomocou Google účtu.</a></p></div>';
+      echo '<div class = "text-center"<p><a role="button" href="' . filter_var($auth_url, FILTER_SANITIZE_URL) . '">Login with a google account.</a></p></div>';
     }
     ?>
   </div>
