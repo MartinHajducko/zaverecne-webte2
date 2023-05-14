@@ -105,12 +105,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // TODO: Validacia mena, priezviska
 
   if (empty($errmsg)) {
-    $sql = "INSERT INTO users (fullname, login, email, password, 2fa_code) VALUES (:fullname, :login, :email, :password, :2fa_code)";
+    $sql = "INSERT INTO users (fullname, login, email, password, 2fa_code, user_type) VALUES (:fullname, :login, :email, :password, :2fa_code, :user_type)";
 
     $fullname = $_POST['firstname'] . ' ' . $_POST['lastname'];
     $email = $_POST['email'];
     $login = $_POST['login'];
     $hashed_password = password_hash($_POST['password'], PASSWORD_ARGON2ID);
+    $user_type = isset($_POST['role']) ? $_POST['role'] : null;
 
     // 2FA pomocou PHPGangsta kniznice: https://github.com/PHPGangsta/GoogleAuthenticator
     $g2fa = new PHPGangsta_GoogleAuthenticator();
@@ -125,17 +126,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(":login", $login, PDO::PARAM_STR);
     $stmt->bindParam(":password", $hashed_password, PDO::PARAM_STR);
     $stmt->bindParam(":2fa_code", $user_secret, PDO::PARAM_STR);
+    $stmt->bindParam(":user_type", $user_type, PDO::PARAM_STR);
 
     if ($stmt->execute()) {
-      // qrcode je premenna, ktora sa vykresli vo formulari v HTML.
-      $qrcode = $codeURL;
+        // qrcode je premenna, ktora sa vykresli vo formulari v HTML.
+        $qrcode = $codeURL;
     } else {
-      echo "Oops, something went wrong.";
+        echo "Ups. Nieco sa pokazilo";
     }
 
     unset($stmt);
-  }
-  unset($pdo);
+}
+unset($pdo);
+
 }
 
 ?>
@@ -341,7 +344,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="form-group">
         <button type="submit" class="btn btn-success btn-lg btn-block">Sign up</button>
       </div>
+      <div class="form-check">
+  <input class="form-check-input" type="radio" name="role" id="is_student" value="student">
+  <label class="form-check-label" for="is_student">
+  I am a student
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="role" id="is_teacher" value="teacher">
+  <label class="form-check-label" for="is_teacher">
+  I am a teacher
+  </label>
+</div>
       <div class="form-group">
+        
         <?php
 
         if (!empty($errmsg)) {
