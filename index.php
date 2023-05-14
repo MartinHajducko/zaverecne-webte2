@@ -52,7 +52,7 @@
 
   <main class=page-wrapper>
     <h1 class="page-title">Samo Tomáš Hajdy Kubo</h1>
-    <p id="text-to-translate">Vitajte na stránke</p>
+    <p id="text-to-translate">Vitajte na stránke AAA</p>
   </main>
 
 </body>
