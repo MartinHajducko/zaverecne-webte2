@@ -1,8 +1,6 @@
 <?php
-
-
 session_start();
-require_once 'client/vendor/autoload.php';
+require_once 'vendor/autoload.php';
 require_once 'config.php';
 
 $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
@@ -312,7 +310,7 @@ h3{
 	
   <?php
 
-require_once 'client/vendor/autoload.php';
+require_once 'vendor/autoload.php';
 require_once 'config.php';
 
 // Inicializacia Google API klienta
@@ -323,7 +321,7 @@ $client = new Google\Client();
 $client->setAuthConfig('client_secret.json');
 
 // Nastavenie URI, na ktoru Google server presmeruje poziadavku po uspesnej autentifikacii.
-$redirect_uri = "https://site230.webte.fei.stuba.sk/zadanie5/redirect.php";
+$redirect_uri = "https://site112.webte.fei.stuba.sk/zaverecne-zadanie/redirect.php";
 $client->setRedirectUri($redirect_uri);
 
 // Definovanie Scopes - rozsah dat, ktore pozadujeme od pouzivatela z jeho Google uctu.
