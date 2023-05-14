@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Validacia mailu
   if (checkGmail($_POST['email'])) {
-    $errmsg .= "Login with Google login";
+    $errmsg .= "Login with Google account";
     // Ak pouziva google mail, presmerujem ho na prihlasenie cez Google.
     // header("Location: google_login.php");
   }
@@ -330,11 +330,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $message = '<p>Scan QR code: <br> <br><img src="' . $qrcode . '" alt="qr kod pre aplikaciu authenticator"></p>';
 
           echo $message;
-          echo '<p>Login: <a href="./login.php" role="button">Login</a></p>';
+          echo '<p>Login: <a href="./login-en.php" role="button">Login</a></p>';
         }
         ?>
       </div>
-      <div class="text-center">Have you already created an account? <a href="./login.php">Login</a></div>
+      <div class="text-center">Have you already created an account? <a href="./login-en.php">Login</a></div>
     </form>
   </div>
 </body>

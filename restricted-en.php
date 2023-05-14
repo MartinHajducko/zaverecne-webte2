@@ -66,7 +66,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         </ul>
         <ul class="nav navbar-nav navbar-right">
 
-          <li class="active"><a href="logout-en.php"><span class="glyphicon glyphicon-user"></span> Loggout</a></li>
+          <li class="active"><a href="logout-en.php"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
 
         </ul>
       </div>
@@ -101,7 +101,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <p class="text">
                 </p>
                 </p>
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Údaje o prihlásenom použivateľovi</button>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Logged user's informations:</button>
               </div>
             </div>
 
