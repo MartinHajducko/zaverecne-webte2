@@ -357,7 +357,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $client->setAuthConfig('client_secret.json');
 
     // Nastavenie URI, na ktoru Google server presmeruje poziadavku po uspesnej autentifikacii.
-    $redirect_uri = "https://site230.webte.fei.stuba.sk/zadanie5/redirect.php";
+    $redirect_uri = "https://site163.webte.fei.stuba.sk/zadanie5/redirect-en.php";
     $client->setRedirectUri($redirect_uri);
 
     // Definovanie Scopes - rozsah dat, ktore pozadujeme od pouzivatela z jeho Google uctu.
