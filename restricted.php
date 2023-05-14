@@ -53,7 +53,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Olympic games</a>
+        <a class="navbar-brand" href="#">Učiteľ</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
@@ -96,7 +96,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
               <div class="card-text">
 
                 <p class="ellipsis">
-                <h2 class="nazov">Vitaj <?php echo $_SESSION['fullname']; ?></h2>
+                <h2 class="nazov">Vitaj učiteľ<?php echo $_SESSION['fullname']; ?></h2>
                 <br>
                 <p class="text">
                 </p>
@@ -249,7 +249,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
   </main>
   <div class="footer">
-    <p>Prihlásený: <?php echo $_SESSION['fullname']; ?></p>
+    <p>Prihlásený učiteľ: <?php echo $_SESSION['fullname']; ?></p>
   </div>
 </body>
 
