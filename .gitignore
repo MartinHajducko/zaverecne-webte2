@@ -5,5 +5,9 @@ config.php
 client_secret.json
 login-en.php
 login.php
+<<<<<<< HEAD
+redirect-en.php
+=======
+>>>>>>> 979924f90fdd9c84a85edd3c53310dad5385a8f5
 redirect.php
 redirect-en.php
