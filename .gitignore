@@ -2,4 +2,4 @@
 .vscode/sftp.json
 config.php
 .git
-.client_secret.json
+client_secret.json
