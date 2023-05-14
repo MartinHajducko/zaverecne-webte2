@@ -3,3 +3,7 @@
 config.php
 .git
 client_secret.json
+login-en.php
+login.php
+.gitignore
+redirect.php
