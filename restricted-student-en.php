@@ -30,7 +30,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Zabezpečená stránka</title>
+  <title>Secure site</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -53,11 +53,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Učiteľ</a>
+        <a class="navbar-brand" href="#">Student</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Domov</a></li>
+          <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
           <li class="dropdown">
 
 
@@ -66,7 +66,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         </ul>
         <ul class="nav navbar-nav navbar-right">
 
-          <li class="active"><a href="logout.php"><span class="glyphicon glyphicon-user"></span> Odhlásenie</a></li>
+          <li class="active"><a href="logout.php"><span class="glyphicon glyphicon-user"></span> Log Out</a></li>
 
         </ul>
       </div>
@@ -96,12 +96,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
               <div class="card-text">
 
                 <p class="ellipsis">
-                <h2 class="nazov">Vitaj učiteľ<?php echo $_SESSION['fullname']; ?></h2>
+                <h2 class="nazov">Welcome student <?php echo $_SESSION['fullname']; ?></h2>
                 <br>
                 <p class="text">
                 </p>
                 </p>
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Údaje o prihlásenom použivateľovi</button>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">User login data</button>
               </div>
             </div>
 
@@ -118,13 +118,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Uživateľ <?php echo $_SESSION['login']; ?></h4>
+                    <h4 class="modal-title">User <?php echo $_SESSION['login']; ?></h4>
                   </div>
                   <div class="modal-body">
 
-                    <p class="text1"><strong>Si prihlaseny pod emailom:</strong> <?php echo $_SESSION['email']; ?></p>
-                    <p class="text1"><strong>Tvoje prihlasovacie meno je:</strong> <?php echo $_SESSION['login']; ?></p>
-                    <p class="text1"><strong>Dátum registracie konta:</strong> <?php echo $_SESSION['created_at'] ?></p>
+                    <p class="text1"><strong>You are logged in using the email address:</strong> <?php echo $_SESSION['email']; ?></p>
+                    <p class="text1"><strong>Your login name is:</strong> <?php echo $_SESSION['login']; ?></p>
+                    <p class="text1"><strong>Account registration date:</strong> <?php echo $_SESSION['created_at'] ?></p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Zavrieť</button>
@@ -249,8 +249,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
   </main>
   <div class="footer">
-    <p>Prihlásený učiteľ: <?php echo $_SESSION['fullname']; ?></p>
+    <p>Logged in: <?php echo $_SESSION['fullname']; ?></p>
   </div>
+
 </body>
 
 </html>
