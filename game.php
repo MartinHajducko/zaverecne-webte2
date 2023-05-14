@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="./client/src/styles/styles.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
-  <title>Hra</title>
+  <title>Matematika</title>
 </head>
 
 <body>
@@ -25,22 +25,27 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <div class="page-logo-container">
+          <img class="page-logo" src="./client/media/logos/logo.png" alt="logo">
+        </div>
+        <div class="collapse navbar-collapse justify-content-center flex-grow-unset" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item mr-5">
               <a class="nav-link" href="./index.php">Domov</a>
             </li>
             <li class="nav-item mr-5">
-              <a class="nav-link" href="#">Hra</a>
+              <a class="nav-link" href="#">Matematika</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./login.php">Prihlásenie</a>
             </li>
           </ul>
-        </div>
-        <div class="language-switcher">
-          <a href="./game.php" class="language-flag"><img src="https://flagcdn.com/48x36/sk.png" alt="Slovak"></a>
-          <a href="./game-en.php" class="language-flag"><img src="https://flagcdn.com/48x36/gb.png" alt="English"></a>
+          <ul class="navbar-nav language-switcher">
+            <li class="nav-item mr-5">
+              <a href="./index.php" class="language-flag"><img src="https://flagcdn.com/48x36/sk.png" alt="Slovak"></a>
+              <a href="./index-en.php" class="language-flag"><img src="https://flagcdn.com/48x36/gb.png" alt="English"></a>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
@@ -51,8 +56,35 @@
   <script src="https://apis.google.com/js/api.js"></script>
 
   <main class=page-wrapper>
-    <h1 class="page-title">HRA</h1>
+    <h1 class="page-title">Matematika</h1>
   </main>
+
+  <footer id="footer-section">
+    <div id="max-width-footer">
+      <div class="footer-info">
+        <p>Samuel Michalčík</p>
+        <p>Jakub Taňkoš</p>
+        <p>Tomáš Jenčík</p>
+        <p>Martin Hajdučko</p>
+      </div>
+      <div id="icon-container">
+        <img id="footer-icon" src="./client/media/logos/favicon.jpg" alt="Logo"></img>
+      </div>
+      <div class="footer-info">
+        <address>
+          <ul>
+            <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xmichalciks@stuba.sk">xmichalciks@stuba.sk</a></li>
+            <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xtankos@stuba.sk">xtankos@stuba.sk</a></li>
+            <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xjencikt@stuba.sk">xjencikt@stuba.sk</a></li>
+            <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xhajducko@stuba.sk">xhajducko@stuba.sk</a></li>
+          </ul>
+        </address>
+      </div>
+    </div>
+  </footer>
+  <footer id="footer-bar">
+    <p>&copy; 2023 MATHEX </p>
+  </footer>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
