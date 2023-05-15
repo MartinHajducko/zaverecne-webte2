@@ -70,7 +70,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Read and process the LaTeX file
-    $thePath = '/var/www/site112.webte.fei.stuba.sk/zaverecne-zadanie/odozva02pr.tex';
+    $thePath = '/var/www/site230.webte.fei.stuba.sk/zadanie5/client/media/latex/odozva02pr.tex';
     $latexContent = file_get_contents($thePath);
     $latexName = basename($thePath);
 
