@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: localhost:3306
--- Čas generovania: Po 15.Máj 2023, 14:41
+-- Čas generovania: Po 15.Máj 2023, 22:14
 -- Verzia serveru: 8.0.32-0ubuntu0.22.04.2
 -- Verzia PHP: 8.2.3
 
@@ -28,7 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `equation` (
-  `task` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci NOT NULL,
+  `task` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci DEFAULT NULL,
+  `question` varchar(1000) COLLATE utf8mb4_slovak_ci DEFAULT NULL,
+  `imageTask` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci DEFAULT NULL,
   `solution` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci DEFAULT NULL,
   `latexFile` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci NOT NULL,
   `date` date DEFAULT NULL,
@@ -39,9 +41,10 @@ CREATE TABLE `equation` (
 -- Sťahujem dáta pre tabuľku `equation`
 --
 
-INSERT INTO `equation` (`task`, `solution`, `latexFile`, `date`, `canGenerate`) VALUES
-('\n        y^{\'\'\'}(t)+8y^{\'\'}(t)+19y^{\'}(t)+12y(t)=u(t)\n    ', '\n        y(t)=\\dfrac{1}{12} - \\dfrac{3}{2}e^{-t} + \\dfrac{1}{6}e^{-3t} + \\dfrac{1}{4}e^{-4t} = 0.0833 -1.5 e^{-t} + 0.1666 e^{-3t} + 0.25 e^{-4t}\n    ', 'odozva02pr.tex', NULL, NULL),
-('\n        y^{\'\'\'}(t)+8y^{\'\'}(t)+19y^{\'}(t)+12y(t)=u(t)\n    ', '\n        y(t)=\\dfrac{1}{12} - \\dfrac{7}{6}e^{-t} + \\dfrac{1}{6}e^{-3t} - \\dfrac{1}{12}e^{-4t} = 0.0833 -1.166 e^{-t} + 0.1666 e^{-3t} - 0.0833 e^{-4t}\n    ', 'odozva02pr.tex', NULL, NULL);
+INSERT INTO `equation` (`task`, `question`, `imageTask`, `solution`, `latexFile`, `date`, `canGenerate`) VALUES
+(NULL, '\n    Nájdite prenosovú funkciu $F(s)=\\dfrac{Y(s)}{W(s)}$ pre systém opísaný blokovou schémou: \n\n    \n', '/var/www/site112.webte.fei.stuba.sk/zaverecne-zadanie/blokovka01_00002.jpg', '\n    \\begin{equation*}\n        \\dfrac{2s^2+13s+10}{s^3+7s^2+18s+15}\n    \\end{equation*}\n', 'blokovka01pr.tex', '2023-05-15', 1),
+(NULL, '\n    Nájdite prenosovú funkciu $F(s)=\\dfrac{Y(s)}{W(s)}$ pre systém opísaný blokovou schémou: \n\n    \n', '/var/www/site112.webte.fei.stuba.sk/zaverecne-zadanie/blokovka01_00003.jpg', '\n    \\begin{equation*}\n        \\dfrac{7s+10}{2s^3+11s^2+12s+10}\n    \\end{equation*}\n', 'blokovka01pr.tex', '2023-05-15', 1),
+(NULL, '\n    Nájdite prenosovú funkciu $F(s)=\\dfrac{Y(s)}{W(s)}$ pre systém opísaný blokovou schémou: \n\n    \n', '/var/www/site112.webte.fei.stuba.sk/zaverecne-zadanie/blokovka01_00004.jpg', '\n    \\begin{equation*}\n        4\\dfrac{3s+1}{s^3+10s^2+13s+14}\n    \\end{equation*}\n', 'blokovka01pr.tex', '2023-05-15', 1);
 
 -- --------------------------------------------------------
 
