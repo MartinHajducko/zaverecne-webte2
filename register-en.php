@@ -297,7 +297,7 @@ unset($pdo);
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="./index-en.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+          <li><a href="./logout-en.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
           <li class="dropdown"></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
