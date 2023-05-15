@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="./client/src/styles/styles.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
-  <title>Matematika</title>
+  <title>Mathex</title>
 </head>
 
 <body>
@@ -34,7 +34,7 @@
               <a class="nav-link" href="./index.php">Domov</a>
             </li>
             <li class="nav-item mr-5">
-              <a class="nav-link" href="#">Matematika</a>
+              <a class="nav-link" href="#">Inštrukcie</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./login.php">Prihlásenie</a>
@@ -51,12 +51,22 @@
     </nav>
   </header>
 
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://apis.google.com/js/api.js"></script>
-
   <main class=page-wrapper>
-    <h1 class="page-title">Matematika</h1>
+    <div class="card card-wrapper">
+      <h1 class="card-title card-header">Ako pužiť aplikáciu Mathex?</h1>
+      <h2 class="card-subtitle card-header">Inštrukcie pre učiteľa</h2>
+      <div class="card-description-container card-body">
+        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
+        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
+        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
+      </div>
+      <h2 class="card-subtitle card-header">Inštrukcie pre študenta</h2>
+      <div class="card-description-container card-body">
+        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
+        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
+        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
+      </div>
+    </div>
   </main>
 
   <footer id="footer-section">
@@ -75,7 +85,7 @@
           <ul>
             <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xmichalciks@stuba.sk">xmichalciks@stuba.sk</a></li>
             <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xtankos@stuba.sk">xtankos@stuba.sk</a></li>
-            <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xjencikt@stuba.sk">xjencikt@stuba.sk</a></li>
+            <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xjencikt@stuba.sk">xjencik@stuba.sk</a></li>
             <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xhajducko@stuba.sk">xhajducko@stuba.sk</a></li>
           </ul>
         </address>
