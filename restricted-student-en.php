@@ -57,7 +57,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+          <li><a href="logout.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
           <li class="dropdown">
 
 
