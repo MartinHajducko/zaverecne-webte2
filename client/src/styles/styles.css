@@ -158,12 +158,39 @@ p {
 .card-description {
   font-size: var(--global-smaller);
   color: var(--global-dark-blue);
+  page-break-inside: avoid;
+}
+
+#download-pdf-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 60%;
+  height: 60px;
+  margin: 0 auto;
+  border: none;
+  border-radius: 10px;
+
+  font-size: var(--global-smaller);
+  color: var(--global-grey);
+  background-color: var(--global-dark-blue);
+}
+
+#download-pdf-btn:hover {
+  scale: 1.1;
+  transition-duration: 600ms;
+  background-color: var(--global-golden);
 }
 
 @media screen and (max-width: 768px) {
   .card-wrapper {
     width: 90%;
     padding: 30px;
+  }
+
+  #download-pdf-btn {
+    width: 75%;
   }
 }
 
@@ -183,6 +210,11 @@ p {
   }
 
   .card-description {
+    font-size: var(--global-small);
+  }
+
+  #download-pdf-btn {
+    width: 90%;
     font-size: var(--global-small);
   }
 }
