@@ -2,8 +2,3 @@
 .vscode/sftp.json
 config.php
 .git
-client_secret.json
-login-en.php
-login.php
-redirect.php
-redirect-en.php
