@@ -56,6 +56,7 @@ try {
 */
 ?>
 <?php
+
 try {
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -69,9 +70,12 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Read and process the LaTeX file
-    $latexPath = '/var/www/site112.webte.fei.stuba.sk/jedalne/zaverecne-zadanie/.vscode/odozva02pr.tex';
-    $latexContent = file_get_contents($latexPath);
-    $latexName = basename($latexPath);
+    $thePath = '/var/www/site112.webte.fei.stuba.sk/zaverecne-zadanie/odozva02pr.tex';
+    $latexContent = file_get_contents($thePath);
+    $latexName = basename($thePath);
+
+    $fileExtension = pathinfo($thePath, PATHINFO_EXTENSION);
+    if ($fileExtension === 'tex') {
 
     // Process tasks and solutions
     $taskPattern = '/\\\\begin\{task\}(.*?)\\\\end\{task\}/s';
@@ -94,49 +98,60 @@ try {
             $solutionEquationPattern = '/\\\\begin\{equation\*\}(.*?)\\\\end\{equation\*\}/s';
             preg_match($solutionEquationPattern, $solutionContent, $solutionEquationMatches);
 
-            // Extract the image filenames
-            preg_match_all($imagePattern, $taskContent, $taskImageMatches);
-            preg_match_all($imagePattern, $solutionContent, $solutionImageMatches);
 
             if (isset($equationMatches[1]) && isset($solutionEquationMatches[1])) {
                 $taskEquation = $equationMatches[1];
                 $solutionEquation = $solutionEquationMatches[1];
                 // Process the equations as needed
 
-                $date = '2023-05-25';
-
-                echo $date;
 
                 // Insert the task and solution into the database
-                $sql = "INSERT INTO equation (task, solution, latexFile, date) VALUES (:task, :solution, :latexFile, :date)";
+                $sql = "INSERT INTO equation (task, solution, latexFile) VALUES (:task, :solution, :latexFile)";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':task', $taskEquation);
                 $stmt->bindParam(':solution', $solutionEquation);
                 $stmt->bindParam(':latexFile', $latexName);
-                $stmt->bindParam(':date', $date);
                 $stmt->execute();
-
-                // Process the image files
-            if (!empty($taskImageMatches[1])) {
-                foreach ($taskImageMatches[1] as $filename) {
-                    // Load and process the task image file
-                    // Implement your logic here based on your preferences
-                    // For example, you can save the image file to a specific directory and store the filename in the database
-                }
-            }
-
-            if (!empty($solutionImageMatches[1])) {
-                foreach ($solutionImageMatches[1] as $filename) {
-                    // Load and process the solution image file
-                    // Implement your logic here based on your preferences
-                    // For example, you can save the image file to a specific directory and store the filename in the database
-                }
-            }
         }
     }
 } else {
     echo "No task content found in the LaTeX file or unequal number of tasks and solutions.";
 }
+    }
+    elseif ($fileExtension === 'jpg') {
+        // Process JPG file
+        $fileName = basename($thePath);
+
+        // Perform OCR on the image to extract text, including equations
+        $command = "tesseract $thePath stdout";
+        $output = shell_exec($command);
+
+        echo "OCR Output: " . var_export($output, true) . PHP_EOL; // Debug statement
+
+
+        // Extract equations from the OCR output
+        $equationPattern = '/\\\\begin\{equation\*\}(.*?)\\\\end\{equation\*\}/s';
+        preg_match_all($equationPattern, $output, $equationMatches, PREG_SET_ORDER);
+
+        if (!empty($equationMatches)) {
+            foreach ($equationMatches as $match) {
+                $equationContent = $match[1];
+
+                // Process the equation as needed
+
+                // Insert the equation into the database
+                $sql = "INSERT INTO equation (equation, latexFile) VALUES (:equation, :latexFile)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':equation', $equationContent);
+                $stmt->bindParam(':fileName', $fileName);
+                $stmt->execute();
+            }
+        } else {
+            echo "No equation content found in the image.";
+        }
+    } else {
+        echo "Unsupported file type.";
+    }
 
 } catch (PDOException $e) {
     echo "Database Error: " . $e->getMessage();

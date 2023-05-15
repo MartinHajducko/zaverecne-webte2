@@ -251,6 +251,111 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   <div class="footer">
     <p>Prihlásený učiteľ: <?php echo $_SESSION['fullname']; ?></p>
   </div>
-</body>
+
+  <?php
+// Assuming you have already established a database connection
+require_once('config.php');
+
+$connection = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$query = "SELECT DISTINCT latexFile FROM equation";
+$result = $connection->query($query);
+
+// Check if the query was successful
+if ($result) {
+    // Create an array to store the variants
+    $variants = array();
+
+    // Fetch each row from the result and store the variants in the array
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        $variants[] = $row['latexFile'];
+    }
+} else {
+    // Handle any errors that occurred during the query
+    echo "Error: " . $connection->errorInfo()[2];
+}
+?>
+
+<!-- Display the variants in a form -->
+<form method="POST" action="restricted.php">
+    <?php foreach ($variants as $variant): ?>
+        <label>
+            <input type="checkbox" name="variant[]" value="<?php echo $variant; ?>">
+            <?php echo $variant; ?>
+        </label>
+        <br>
+    <?php endforeach; ?>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+
+<?php
+// Assuming you have already established a PDO database connection
+require_once('config.php');
+
+// Retrieve the date from the form submission
+$date = $_POST['date'];
+
+// Retrieve the selected checkboxes
+$selectedVariants = isset($_POST['variant']) ? $_POST['variant'] : array();
+
+// Prepare the SQL statement
+$query = "UPDATE equation SET date = :date, canGenerate = true WHERE latexFile = :latexFile";
+$stmt = $connection->prepare($query);
+
+// Update the rows in the database
+foreach ($selectedVariants as $variant) {
+    $stmt->bindParam(':latexFile', $variant);
+    $stmt->bindParam(':date', $date);
+    $result = $stmt->execute();
+
+    // Check if the update was successful
+    if (!$result) {
+        echo "Error updating variant: " . $stmt->errorInfo()[2];
+        break; // Exit the loop if an error occurred
+    }
+}
+
+// Check if all updates were successful
+if ($result) {
+    echo "Variants updated successfully!";
+} else {
+    echo "Error updating variants: " . $stmt->errorInfo()[2];
+}
+?>
+
+
+<button id="latexButton">Download Tasks</button>
+
+<script>
+  // Function to handle button click
+  function handleButtonClick() {
+    // Send a GET request to latex.php
+    fetch('latex.php')
+      .then(function(response) {
+        // Handle the response if needed
+        // For example, you can display a success message
+        if (response.ok) {
+          console.log('Tasks downloaded successfully!');
+          location.reload(); // Reload the page
+        } else {
+          console.log('Failed to download tasks.');
+        }
+      })
+      .catch(function(error) {
+        // Handle any errors that occur during the request
+        console.log('Error:', error);
+      });
+  }
+
+  // Attach the click event listener to the button
+  var button = document.getElementById('latexButton');
+  button.addEventListener('click', handleButtonClick);
+</script>
+
 
 </html>

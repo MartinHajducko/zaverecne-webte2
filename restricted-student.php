@@ -254,4 +254,34 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 </body>
 
+<?php
+
+require_once('config.php');
+
+$connection = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+$currentDate = date('Y-m-d');
+
+// Retrieve data from the database
+$query = "SELECT DISTINCT latexFile, canGenerate FROM equation WHERE date = :currentDate";
+$stmt = $connection->prepare($query);
+$stmt->bindParam(':currentDate', $currentDate);
+$stmt->execute();
+$data = $stmt->fetchAll();
+
+// Generate checkboxes based on the canGen column
+foreach ($data as $row) {
+    $file = $row['latexFile'];
+    $canGen = $row['canGenerate'];
+    if ($canGen == 1) {
+        echo '<input type="checkbox" name="files[]" value="' . $file . '">' . $file . '<br>';
+    }
+}
+
+?>
+
+
+
 </html>
