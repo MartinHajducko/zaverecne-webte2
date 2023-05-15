@@ -34,7 +34,7 @@
               <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item mr-5">
-              <a class="nav-link" href="./game-en.php">Math</a>
+              <a class="nav-link" href="./game-en.php">Instructions</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./login-en.php">Login</a>
@@ -83,7 +83,7 @@
           <ul>
             <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xmichalciks@stuba.sk">xmichalciks@stuba.sk</a></li>
             <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xtankos@stuba.sk">xtankos@stuba.sk</a></li>
-            <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xjencikt@stuba.sk">xjencikt@stuba.sk</a></li>
+            <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xjencikt@stuba.sk">xjencik@stuba.sk</a></li>
             <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xhajducko@stuba.sk">xhajducko@stuba.sk</a></li>
           </ul>
         </address>
