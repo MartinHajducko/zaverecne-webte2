@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: localhost:3306
--- Čas generovania: Sun 14.Máj 2023, 19:20
+-- Čas generovania: Po 15.Máj 2023, 14:41
 -- Verzia serveru: 8.0.32-0ubuntu0.22.04.2
 -- Verzia PHP: 8.2.3
 
@@ -29,10 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `equation` (
   `task` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci NOT NULL,
-  `solution` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci NOT NULL,
+  `solution` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci DEFAULT NULL,
   `latexFile` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci NOT NULL,
-  `date` date NOT NULL
+  `date` date DEFAULT NULL,
+  `canGenerate` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_slovak_ci;
+
+--
+-- Sťahujem dáta pre tabuľku `equation`
+--
+
+INSERT INTO `equation` (`task`, `solution`, `latexFile`, `date`, `canGenerate`) VALUES
+('\n        y^{\'\'\'}(t)+8y^{\'\'}(t)+19y^{\'}(t)+12y(t)=u(t)\n    ', '\n        y(t)=\\dfrac{1}{12} - \\dfrac{3}{2}e^{-t} + \\dfrac{1}{6}e^{-3t} + \\dfrac{1}{4}e^{-4t} = 0.0833 -1.5 e^{-t} + 0.1666 e^{-3t} + 0.25 e^{-4t}\n    ', 'odozva02pr.tex', NULL, NULL),
+('\n        y^{\'\'\'}(t)+8y^{\'\'}(t)+19y^{\'}(t)+12y(t)=u(t)\n    ', '\n        y(t)=\\dfrac{1}{12} - \\dfrac{7}{6}e^{-t} + \\dfrac{1}{6}e^{-3t} - \\dfrac{1}{12}e^{-4t} = 0.0833 -1.166 e^{-t} + 0.1666 e^{-3t} - 0.0833 e^{-4t}\n    ', 'odozva02pr.tex', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -49,7 +58,7 @@ CREATE TABLE `users` (
   `2fa_code` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `user_type` varchar(64) COLLATE utf8mb4_slovak_ci NOT NULL
+  `user_type` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_slovak_ci;
 
 --
@@ -57,8 +66,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `login`, `password`, `2fa_code`, `created_at`, `updated_at`, `user_type`) VALUES
-(11, 'Tomáš Jenčík', 'xjencik@stuba.sk', 'xjencik', '$argon2id$v=19$m=65536,t=4,p=1$UC9aQUY2b1l3aHllMXVMNA$yLKDns4//hc024x4kv9tUXw6Grgzpyx2xwDMRlEb0Oc', 'AZH245DH2VZG2IS4', '2023-05-13 15:22:50', '2023-05-13 15:22:50', ''),
-(14, 'Jakub Taňkoš', 'xtankos@stuba.sk', 'xtankos', '$argon2id$v=19$m=65536,t=4,p=1$azNWMjVlb21JTHNvUXBsYw$hDDpiMAUPTZWYqBQMLBHTncr0veM1o/6XMUpoNAQv3w', 'ONM5SDRICKZJ4RCH', '2023-05-14 19:18:17', '2023-05-14 19:18:17', 'student');
+(1, 'Tomáš Jenčík', 'xjencikt@stuba.sk', 'xjenciktstudent', '$argon2id$v=19$m=65536,t=4,p=1$R3YyMnVwckNpQzg2dldMZQ$3nbKIGX3z84OtHWMBC2X4WQx3XfBhVVJgVssrPO8FCQ', '5EWSV5CI5GE4T4LO', '2023-05-15 13:14:16', '2023-05-15 13:14:16', 'student'),
+(2, 'Tomáš Jenčík', 'abba@stuba.sk', 'xjenciktucitel', '$argon2id$v=19$m=65536,t=4,p=1$TUN6dlU2cGNPN2oxOGFEVA$T2vOS5+YWeEHR4Hu2QCJubbixpCeB0U/7G9mqW61Zv4', '7CONSCKVYF2OVM3V', '2023-05-15 13:23:15', '2023-05-15 13:23:15', 'teacher');
 
 --
 -- Kľúče pre exportované tabuľky
@@ -80,7 +89,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pre tabuľku `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
