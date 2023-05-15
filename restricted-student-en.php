@@ -15,7 +15,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     $surname = $_SESSION['surname'];
   } else {
     // Ak pouzivatel prihlaseny nie je, presmerujem ho na hl. stranku.
-    header('Location: index.php');
+    header('Location: index-en.php');
     exit;
   }
 }
