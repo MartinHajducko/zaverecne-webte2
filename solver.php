@@ -228,7 +228,9 @@ $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
         const mf = document.getElementById("formula");
         const latex = document.getElementById("latex");
 
-        mf.addEventListener("input",(ev) => console.log(ev));
+        mf.addEventListener("input", (val) => {
+            console.log(val.target.value);
+        });
 
     </script>
 </body>
