@@ -22,6 +22,51 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 
 ?>
+<?php
+require_once('config.php');
+try {
+  $db = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  
+  $query = "SELECT id, fullname, email, login FROM users WHERE user_type = 'student';  ";
+  
+  $stmt = $db->query($query); 
+  $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+  echo $e->getMessage();
+}
+
+// Export do CSV
+if (isset($_POST['export_csv'])) {
+    $filename = 'export.csv';
+    
+    // Zabezpečenie, aby bol súbor vygenerovaný a stiahnutý
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename='.$filename);
+    header('Pragma: no-cache');
+    header('Expires: 0');
+    
+    $output = fopen('php://output', 'w');
+    
+    // Hlavička CSV súboru
+    fputcsv($output, array('ID', 'First Name', 'Last Name', 'Email', 'Login'));
+    
+    // Dáta z tabuľky
+    foreach ($results as $row) {
+        // Rozdelenie hodnoty v stĺpci "fullname" na meno a priezvisko
+        $fullName = $row['fullname'];
+        $nameParts = explode(' ', $fullName);
+        $firstName = $nameParts[0];
+        $lastName = $nameParts[1];
+        
+        fputcsv($output, array($row['id'], $firstName, $lastName, $row['email'], $row['login']));
+    }
+    
+    fclose($output);
+    exit; // Ukončenie skriptu po exporte do CSV
+}
+?>
 <!doctype html>
 <html lang="sk">
 
@@ -356,6 +401,113 @@ if ($result) {
   var button = document.getElementById('latexButton');
   button.addEventListener('click', handleButtonClick);
 </script>
+
+<style>
+table {
+  width: 80%; 
+  margin: 0 auto; 
+  border-collapse: collapse; 
+  margin-top: 50px;
+}
+
+table th, table td {
+  padding: 8px; 
+  border: 1px solid #ccc; 
+}
+
+table th {
+  background-color: #f2f2f2; 
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9; 
+}
+
+table tr:hover {
+  background-color: #e3e3e3;
+}
+
+.center {
+  text-align: center; 
+  margin-top: 20px;
+}
+
+.center input[type="submit"] {
+  margin-bottom: 80px;
+  padding: 10px 20px; 
+  font-size: 16px; 
+  background-color: #4CAF50; 
+  color: white; 
+  border: none; 
+  cursor: pointer; 
+}
+</style>
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  // Nastavenie smery zoradenia na vzostupne
+  dir = "asc"; 
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          shouldSwitch= true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      switchcount ++;
+    } else {
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+
+<?php
+echo '<table id="myTable">';
+echo '<tr><th onclick="sortTable(0)">ID</th><th onclick="sortTable(1)">First Name</th><th onclick="sortTable(2)">Last Name</th><th onclick="sortTable(3)">Email</th><th onclick="sortTable(4)">Login</th></tr>';
+
+foreach ($results as $row) {
+    $fullName = $row['fullname'];
+    $nameParts = explode(' ', $fullName);
+    $firstName = $nameParts[0];
+    $lastName = $nameParts[1];
+
+    echo '<tr>';
+    echo '<td>' . $row['id'] . '</td>';
+    echo '<td>' . $firstName . '</td>';
+    echo '<td>' . $lastName . '</td>';
+    echo '<td>' . $row['email'] . '</td>';
+    echo '<td>' . $row['login'] . '</td>';
+    echo '</tr>';
+}
+
+echo '</table>';
+?>
+
+
+<form method="post" action="" class="center">
+    <input type="submit" name="export_csv" value="Export to CSV">
+</form>
 
 
 </html>
