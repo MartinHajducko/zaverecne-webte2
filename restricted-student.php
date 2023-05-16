@@ -270,17 +270,21 @@ $stmt = $connection->prepare($query);
 $stmt->bindParam(':currentDate', $currentDate);
 $stmt->execute();
 $data = $stmt->fetchAll();
-
-// Generate checkboxes based on the canGen column
-foreach ($data as $row) {
-    $file = $row['latexFile'];
-    $canGen = $row['canGenerate'];
-    if ($canGen == 1) {
-        echo '<input type="checkbox" name="files[]" value="' . $file . '">' . $file . '<br>';
-    }
-}
-
 ?>
+<form action="student-equation-test.php" method="post">
+  <?php
+  // Generate checkboxes based on the canGen column
+  foreach ($data as $row) {
+      $file = $row['latexFile'];
+      $canGen = $row['canGenerate'];
+      if ($canGen == 1) {
+          echo '<input type="checkbox" name="files[]" value="' . $file . '">' . $file . '<br>';
+      }
+  }
+  ?>
+  <button type="submit">Go to Page</button>
+</form>
+
 
 
 
