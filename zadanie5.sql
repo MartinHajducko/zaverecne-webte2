@@ -70,8 +70,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `login`, `password`, `2fa_code`, `created_at`, `updated_at`, `user_type`) VALUES
 (1, 'Tomáš Jenčík', 'xjencikt@stuba.sk', 'xjenciktstudent', '$argon2id$v=19$m=65536,t=4,p=1$R3YyMnVwckNpQzg2dldMZQ$3nbKIGX3z84OtHWMBC2X4WQx3XfBhVVJgVssrPO8FCQ', '5EWSV5CI5GE4T4LO', '2023-05-15 13:14:16', '2023-05-15 13:14:16', 'student'),
-(2, 'Tomáš Jenčík', 'abba@stuba.sk', 'xjenciktucitel', '$argon2id$v=19$m=65536,t=4,p=1$TUN6dlU2cGNPN2oxOGFEVA$T2vOS5+YWeEHR4Hu2QCJubbixpCeB0U/7G9mqW61Zv4', '7CONSCKVYF2OVM3V', '2023-05-15 13:23:15', '2023-05-15 13:23:15', 'teacher');
-
+(2, 'Tomáš Jenčík', 'abba@stuba.sk', 'xjenciktucitel', '$argon2id$v=19$m=65536,t=4,p=1$TUN6dlU2cGNPN2oxOGFEVA$T2vOS5+YWeEHR4Hu2QCJubbixpCeB0U/7G9mqW61Zv4', '7CONSCKVYF2OVM3V', '2023-05-15 13:23:15', '2023-05-15 13:23:15', 'teacher'),
+(3, 'Martin Hajdučko', 'xhajducko@stuba.sk', 'xhajducko', '$argon2id$v=19$m=65536,t=4,p=1$NThVUm9sWjRuMmpnT3FkWQ$idIk/Er78Yg+utE3uee0ph93rGIzTGpjqtW9U/FO0CI', 'LZHPFGTIQXL5LBY4', '2023-05-15 17:40:08', '2023-05-15 17:40:08', 'student'),
+(4, 'Martin Hajdučko', 'a@b.com', 'hajdyUcitel', '$argon2id$v=19$m=65536,t=4,p=1$bHJTeXRVcVA3RWQvcVFHMg$CWuWd2LGfcNODXEqLMra1r3KcsT3MedcA3mEj9UAFVY', 'JNHD4Y2AY25GZR6H', '2023-05-15 18:07:31', '2023-05-15 18:07:31', 'teacher');
 --
 -- Kľúče pre exportované tabuľky
 --

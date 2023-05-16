@@ -181,17 +181,77 @@ $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
                         </div>
                     </div>
                 </div>
-
-                <!-- Content -->
                 <div class="row mx-2">
-                    <div class="row equation_assign">
-                        
-                        Nájdite prenosovú funkciu $$F(s)=\dfrac{Y(s)}{W(s)}$$ pre systém opísaný blokovou schémou: 
+                    <div class="row"><?php
+                    require_once('config.php');
 
-                        \includegraphics{zadanie99/images/blokovka01_00002.jpg} 
-                    
-                    
+                    $connection = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+                    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+                    $currentDate = date('Y-m-d');
+
+                    // Retrieve data from the database
+                    $query = "SELECT DISTINCT latexFile, canGenerate FROM equation WHERE date = :currentDate";
+                    $stmt = $connection->prepare($query);
+                    $stmt->bindParam(':currentDate', $currentDate);
+                    $stmt->execute();
+                    $data = $stmt->fetchAll();
+                    ?>
+                    <form action="solver.php" method="post">
+                    <?php
+                    // Generate checkboxes based on the canGen column
+                    foreach ($data as $row) {
+                        $file = $row['latexFile'];
+                        $canGen = $row['canGenerate'];
+                        if ($canGen == 1) {
+                            echo '<input type="checkbox" name="files[]" value="' . $file . '">' . $file . '<br>';
+                        }
+                    }
+                    ?>
+                    <button type="submit">Generuj</button>
+                    </form>
                     </div>
+                </div>
+                <!-- Content -->
+                <div class="row mx-2 mb-5">
+                    <div class="row equation_assign">
+                    <?php
+                    $query = "SELECT question, latexFile, task, imageTask FROM equation"; // Replace your_table_name with the actual table name
+
+                    $stmt = $connection->query($query);
+
+                    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        // Check if any checkboxes were selected
+                        if (isset($_POST['files'])) {
+                            // Get the selected checkbox values
+                            $selectedFiles = $_POST['files'];
+
+                            // Iterate through the data and print rows where latexFile matches the selected checkbox values
+                            foreach ($data as $row) {
+                                $latexFile = $row['latexFile'];
+                                $task = $row['task'];
+                                $image = $row['imageTask'];
+                                $question = $row['question'];
+
+                                if (in_array($latexFile, $selectedFiles)) {
+                                    if ($task !== null) {
+                                        echo "Question: $question<br>";
+                                        echo "Task: $task<br>";
+                                    } else if($image != null){
+                                        echo "Question: $question<br>";
+                                        $fileName = basename($image);
+                                        echo "<img src=\"$fileName \"><br>";
+                                    }
+                                }
+                            }
+                        }
+                    } 
+                    ?>
+                    </div>
+                    
                     <div class="row equation_answer">
                         <label>Mathfield</label>
                         <math-field style="
@@ -204,8 +264,9 @@ $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
                             --caret-color: blue;
                             --selection-background-color: lightgoldenrodyellow;
                             --selection-color: darkblue;
-                            " id="formula">x=\frac{-b\pm \sqrt{b^2-4ac}}{2a}</math-field>
+                            " id="formula"></math-field>
                     </div>
+                    <button id="check">Odoslať odpoveď</button>
                     
                 </div>
                 
@@ -230,6 +291,29 @@ $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 
         mf.addEventListener("input", (val) => {
             console.log(val.target.value);
+        });
+
+        document.getElementById('check').addEventListener('click', function() {
+        const userAnswer = mf.value;
+
+        fetch('check_answer.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'userAnswer=' + encodeURIComponent(userAnswer)
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data === 'correct') {
+                console.log('Correct!');
+            } else {
+                console.log('Incorrect!');
+            }
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
         });
 
     </script>

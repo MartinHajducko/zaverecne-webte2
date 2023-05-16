@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
           // Rozhodni sa, na ktorú stránku presmerovať používateľa na základe jeho role.
           if ($row['user_type'] == 'student') {
-            header("location: restricted-student.php");
+            header("location: solver.php");
           } else if ($row['user_type'] == 'teacher') {
             header("location: restricted.php");
           } else {
