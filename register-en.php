@@ -94,12 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errmsg .= "The user with this e-mail / login already exists.</p>";
   }
 
-  // Validacia mailu
-  if (checkGmail($_POST['email'])) {
-    $errmsg .= "Login with Google account";
-    // Ak pouziva google mail, presmerujem ho na prihlasenie cez Google.
-    // header("Location: google_login.php");
-  }
+ 
 
   // TODO: Validacia hesla
   // TODO: Validacia mena, priezviska

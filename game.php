@@ -42,8 +42,8 @@
           </ul>
           <ul class="navbar-nav language-switcher">
             <li class="nav-item mr-5">
-              <a href="./index.php" class="language-flag"><img src="https://flagcdn.com/48x36/sk.png" alt="Slovak"></a>
-              <a href="./index-en.php" class="language-flag"><img src="https://flagcdn.com/48x36/gb.png" alt="English"></a>
+              <a href="./game.php" class="language-flag"><img src="https://flagcdn.com/48x36/sk.png" alt="Slovak"></a>
+              <a href="./game-en.php" class="language-flag"><img src="https://flagcdn.com/48x36/gb.png" alt="English"></a>
             </li>
           </ul>
         </div>
@@ -66,6 +66,7 @@
         <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
         <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
       </div>
+      <button id="download-pdf-btn" >Stiahnúť PDF</button>
     </div>
   </main>
 
@@ -98,6 +99,34 @@
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
 <script src="./client/src/js/script.js"></script>
+<script>
+  // html to pdf
+  const downloadBtn = document.getElementById('download-pdf-btn');
+  downloadBtn.addEventListener('click', () => {
+    const content = document.querySelector('.page-wrapper');
+    const options = {
+      margin: 0,
+      padding: 20,
+      fontSize: 12,
+      textalign: 'center',
+      filename: 'mathex_instructions.pdf',
+      image: {
+        type: 'jpeg',
+        quality: 1
+      },
+      html2canvas: {
+        scale: 2
+      },
+      jsPDF: {
+        unit: 'mm',
+        format: 'a4',
+        orientation: 'portrait'
+      }
+    };
+    html2pdf().set(options).from(content).save();
+  });
+</script>
 
 </html>
