@@ -68,15 +68,21 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Read and process the LaTeX file
+    
+    $dir = 'client/media/latex/';
+    //$thePath = './client/media/latex/blokovka01pr.tex';
+    $files = glob($dir . "*.tex");
 
-    $thePath = '/var/www/site112.webte.fei.stuba.sk/zaverecne-zadanie/blokovka01pr.tex';
+    $tasksAndSolutions = [];
 
-    $latexContent = file_get_contents($thePath);
-    $latexName = basename($thePath);
+    foreach ($files as $file) {
+
+    $latexContent = file_get_contents($file);
+    $latexName = basename($file);
 
     $images = [];
 
-    $fileExtension = pathinfo($thePath, PATHINFO_EXTENSION);
+    $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
     if ($fileExtension === 'tex') {
 
         // Process tasks and solutions
@@ -143,7 +149,7 @@ try {
     } else {
         echo "Unsupported file type.";
     }
-} catch (PDOException $e) {
+}} catch (PDOException $e) {
     echo "Database Error: " . $e->getMessage();
 }
 

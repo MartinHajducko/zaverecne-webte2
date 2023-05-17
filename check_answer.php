@@ -5,10 +5,11 @@ $connection = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $passwor
 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $userAnswer = $_POST['userAnswer'];
+$taskId = $_POST['taskId'];
 
-$query = "SELECT solution FROM equation WHERE latexFile = :latexFile";
+$query = "SELECT solution FROM equation WHERE id = :taskId";
 $stmt = $connection->prepare($query);
-$stmt->bindParam(':latexFile', $latexFile);
+$stmt->bindParam(':taskId', $taskId);
 $stmt->execute();
 
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -18,8 +19,17 @@ $correctAnswer = $row['solution'];
 $correctAnswer = str_replace(['\begin{equation*}', '\end{equation*}'], '', $correctAnswer);
 $correctAnswer = trim($correctAnswer); // remove leading and trailing spaces
 
+$response = array(
+    "task" => $task,
+    "userAnswer" => $userAnswer,
+    "correctAnswer" => $correctAnswer
+);
+
 if ($userAnswer === $correctAnswer) {
-    echo 'correct';
+    $response["result"] = "correct";
 } else {
-    echo 'incorrect';
+    $response["result"] = "incorrect";
 }
+
+echo json_encode($response);
+?>
