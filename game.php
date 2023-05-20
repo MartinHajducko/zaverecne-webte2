@@ -56,15 +56,18 @@
       <h1 class="card-title card-header">Ako pužiť aplikáciu Mathex?</h1>
       <h2 class="card-subtitle card-header">Inštrukcie pre učiteľa</h2>
       <div class="card-description-container card-body">
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
+        <p class="card-description mb-3">Učiteľ sa musí najprv do našej webovej aplikácie zaregistrovať a následne prihlásiť. Po prihlásení má k dispozícii zabezpečenú stránku, na ktorej nájde
+          všetky potrebné informácie prihlásenom uživateľovi. Učiteľ vie zadávať úlohy pre študentov. Po priradení úloh študentom, učiteľ môže
+          sledovať ich pokrok a výsledky. Taktiež je k dispozícii prehľadná tabuľka, v ktorej sú mená študentov, ktorí aplikáciu využívajú. Nakoniec je taktiež možné stiahnuť si danú tabuľku vo formáte .csv</p>
+        </p>
+        <p class="card-description mb-3"></p>
+        <p class="card-description mb-3"></p>
       </div>
       <h2 class="card-subtitle card-header">Inštrukcie pre študenta</h2>
       <div class="card-description-container card-body">
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
+        <p class="card-description mb-3"></p>
+        <p class="card-description mb-3"></p>
+        <p class="card-description mb-3"></p>
       </div>
       <button id="download-pdf-btn" >Stiahnúť PDF</button>
     </div>

@@ -56,9 +56,9 @@
       <h1 class="card-title card-header">Vitajte na stránke MATHEX</h1>
       <h2 class="card-subtitle card-header">Matematika v LaTeXe</h2>
       <div class="card-description-container card-body">
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
+      <p class="card-description mb-3">Vitajte na MATHEX - stránke, ktorá vám umožňuje nahodne generovať matematické úlohy a jednoducho ich kontrolovať. Sme tu, aby sme vám pomohli trénovať si matematické schopnosti a zlepšiť vaše porozumenie matematickým konceptom.</p>
+      <p class="card-description mb-3">Naša platforma vám umožňuje vygenerovať rôzne typy úloh z rôznych oblastí matematiky, od jednoduchých aritmetických výpočtov až po zložitejšie algebraické a geometrické úlohy.</p>
+      <p class="card-description mb-3">Všetky vygenerované úlohy sú napísané v LaTeXe, čo vám umožňuje jednoducho vytvoriť matematické výrazy a symboly. Po vyriešení úlohy môžete svoje odpovede skontrolovať a získať taktiež spätnú väzbu.</p>
       </div>
     </div>
   </main>
