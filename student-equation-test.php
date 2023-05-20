@@ -29,9 +29,13 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include './client/partials/library.php' ?>
-    
+    <!-- <link rel="stylesheet" href="./client/src/styles/styles.css"> -->
+    <link rel="stylesheet" href="./client/src/styles/test.css">
 </head>
 <body>
+<div class="text-center">
+
+<h3 class="mb-3">Vygenerované <span class="badge bg-secondary"> príklady</span></h3>
 
 <?php 
 
@@ -68,14 +72,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if (!empty($tasks)) {
                         // Select a random task from the available tasks
                         $randomTask = $tasks[array_rand($tasks)];
-
-                        echo "Question: $question<br>";
-                        echo "Task: $randomTask<br>"; ?>
-                        <div class="row">
-                            <label>Odpoveď</label>
+                        echo "<div class='card bg-light mb-5'>
+                        <div class='card-header'><h6 style='margin: 30px 0;' class='card-title'>$question</h6></div>
+                        <div class='card-body'>";
+                        ?>
+                        <h5 class="card-title">Odpoveď</h5>
+                            <div class="row">
                             <math-field style="
                                 font-size: 32px;
-                                
+                                margin: 30px 0;
                                 padding: 8px;
                                 border-radius: 8px;
                                 border: 1px solid rgba(0, 0, 0, .3);
@@ -84,22 +89,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 --selection-background-color: lightgoldenrodyellow;
                                 --selection-color: darkblue;
                                 " id="formula"></math-field>
-                            <button id="check" data-task-id="<?php echo $taskId; ?>">Odoslať odpoveď</button>
+                            <button class="btn btn-primary" id="check" data-task-id="<?php echo $taskId; ?>">Odoslať odpoveď</button>
+                            </div>
+                            
                             <!-- <label>v Latexe</label>
                             <textarea name="latex" id="latex" cols="30" rows="2"></textarea> -->
+                            </div>
                         </div>
+                    
                         
                 <?php
                     } else if ($image != null) {
-                        echo "Question: $question<br>";
                         $fileName = basename($image);
-                        echo "<img src='./client/media/images/$fileName'><br>";
+                        echo "<div class='card bg-light mb-5'>
+                        <div class='card-header'><h6 style='margin: 30px 0;' class='card-title'>$question</h6><br>
+                        <img style='max-width: 80vw' src='./client/media/images/$fileName'><br></div>
+                        <div class='card-body'>";
                         ?>
-                        <div class="row">
-                            <label>Odpoveď</label>
-                            <math-field style="
+                        <h5 class="card-title">Odpoveď</h5>
+                        <div class="row"> 
+                        <math-field style="
                                 font-size: 32px;
-                                
+                                margin: 30px 0;
                                 padding: 8px;
                                 border-radius: 8px;
                                 border: 1px solid rgba(0, 0, 0, .3);
@@ -108,22 +119,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 --selection-background-color: lightgoldenrodyellow;
                                 --selection-color: darkblue;
                                 " id="formula"></math-field>
-                            <button id="check" data-task-id="<?php echo $taskId; ?>">Odoslať odpoveď</button>
+                            <button class="btn btn-primary" id="check" data-task-id="<?php echo $taskId; ?>">Odoslať odpoveď</button>
+                            </div>
+                            
                             <!-- <label>v Latexe</label>
                             <textarea name="latex" id="latex" cols="30" rows="2"></textarea> -->
+                            </div>
                         </div>
                         
                         <?php
                     }
 
-                    echo "<hr>"; // Add a horizontal line separator between tasks
+                    //echo "<hr>"; 
                 }
             }
         }
     }
 }
 
+
+
 ?>
+
+<a class="btn btn-dark btn-lg" href="restricted-student.php" role="button">Vrátiť sa späť</a>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script>
         // Select all math-fields
