@@ -60,16 +60,17 @@
       <h1 class="card-title card-header">How to use Mathex application?</h1>
       <h2 class="card-subtitle card-header">Instructions for teachers</h2>
       <div class="card-description-container card-body">
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
+        <p class="card-description mb-3">First, teacher must register to our website and log in after that. After logging in, teacher have available teacher-only restricted
+          page, on which they can find every information about logged user. Teacher can insert tasks for students. They can also se table of all students registered on website.
+          Lastly, teacher can also download student table as .csv file.
+        </p>
       </div>
       <h2 class="card-subtitle card-header">Instructions for students</h2>
       <div class="card-description-container card-body">
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
-      </div>
+        <p class="card-description mb-3">Just like a teacher, student must also register on website and log in into it, if they want to use the site. After that, student
+          can see assigned tasks by teacher. After starting a test, student can try their knowledge and solve all given tasks.
+        </p>
+        </div>
       <button id="download-pdf-btn">Download as PDF</button>
     </div>
   </main>

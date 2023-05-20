@@ -60,9 +60,15 @@
       <h1 class="card-title card-header">Welcome to the MATHEX website</h1>
       <h2 class="card-subtitle card-header">Math in the LaTeX</h2>
       <div class="card-description-container card-body">
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
-        <p class="card-description mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, ullam! Repellendus laborum sint sed minima aspernatur expedita fugiat temporibus explicabo sit commodi? Consequuntur laborum, reprehenderit magni aut dolor quibusdam saepe.</p>
+        <p class="card-description mb-3">Welcome to MATHEX - page, which enables you to randomly generate mathematical tasks and will also easily check them for you.
+          We are here for you to train your mathematical skills and improve your understanding of mathematical concept.</p>
+        </p>
+        <p class="card-description mb-3">Our platform allows you to generate different types of questions from different areas of math, starting from easy aritmethic 
+          calculations to complicated algebraic and geometric equations.
+        </p>
+        <p class="card-description mb-3">All generated tasks are written in Latex, which enables you to easily create mathematical expressions and symbols.
+          After completing task, you can check your answer and see the correct solution.
+        </p>
       </div>
     </div>
   </main>
