@@ -87,46 +87,56 @@ if (isset($_POST['export_csv'])) {
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+  <link rel="stylesheet" href="./client/src/styles/styles.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
+
+
+  <nav class="navbar navbar-expand-md navbar-light justify-content-center page-navbar">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Učiteľ</a>
+        <div class="page-logo-container">
+          <img class="page-logo" src="./client/media/logos/logo.png" alt="logo">
+        </div>
+        <div class="collapse navbar-collapse justify-content-center flex-grow-unset" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item mr-5">
+              <a class="nav-link" href="./logout.php">Domov</a>
+            </li>
+            <li class="nav-item mr-5">
+              <a class="nav-link" href="./game.php">Návod</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./login.php">Prihlásenie</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./logout.php">Odhlásenie</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav language-switcher">
+            <li class="nav-item mr-5">
+              <a href="./restricted.php" class="language-flag"><img src="https://flagcdn.com/48x36/sk.png" alt="Slovak"></a>
+              <a href="./restricted-en.php" class="language-flag"><img src="https://flagcdn.com/48x36/gb.png" alt="English"></a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="logout.php"><span class="glyphicon glyphicon-home"></span> Domov</a></li>
-          <li class="dropdown">
-
-
-          </li>
-
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-
-          <li class="active"><a href="logout.php"><span class="glyphicon glyphicon-user"></span> Odhlásenie</a></li>
-
-        </ul>
-      </div>
-    </div>
-  </nav>
-
+    </nav>
 </head>
 
 <body>
 
 
-  <main>
-
-
-
-
-    <div class="container">
+<main class=page-wrapper>
+    <div class="card card-wrapper">
+    
+      <div class="card-description-container card-body">
+      <div class="container">
 
       <div class="row">
         <div class="col">
@@ -139,12 +149,12 @@ if (isset($_POST['export_csv'])) {
               <div class="card-text">
 
                 <p class="ellipsis">
-                <h2 class="nazov">Vitaj učiteľ <?php echo $_SESSION['fullname']; ?></h2>
+                <h1 class="nazov">Vitaj učiteľ <?php echo $_SESSION['fullname']; ?></h1>
                 <br>
                 <p class="text">
                 </p>
                 </p>
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Údaje o prihlásenom použivateľovi</button>
+                
               </div>
             </div>
 
@@ -185,117 +195,9 @@ if (isset($_POST['export_csv'])) {
       </div>
 
       <br><br>
-      <style>
-        .text1 {
-          color: black;
-        }
-
-        .text {
-          font-size: large;
-          margin-left: 30px;
-
-          margin-top: 20px;
-          margin-bottom: 20px;
-          color: #e5e4e2;
-        }
-
-        .nazov {
-          margin-left: 30px;
-
-          color: #e5e4e2;
-        }
-
-        body {
-          background-color: #0C4A60;
-          ;
-          color: #566787;
-
-          font-family: 'Roboto', sans-serif;
-        }
-
-        section {
-          display: flex;
-          flex-flow: row wrap;
-
-
-
-        }
-
-        P {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          font-size: 16px;
-        }
-
-        H3 {
-          font-family: "IBM Plex Sans", sans-serif;
-          font-weight: 100;
-          text-transform: uppercase;
-          font-size: 28px;
-        }
-
-        figure {
-          background-color: #934A5F;
-          margin: 0px;
-        }
-
-        figure img {
-          width: 100%;
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
-        }
-
-        figure img:hover {
-          opacity: 0.6;
-          transition: all .3s linear;
-        }
-
-        .column {
-          box-sizing: border-box;
-          flex: 1 100%;
-          justify-content: space-evenly;
-          margin: 20px;
-        }
-
-        .card-style {
-          border-radius: 12px;
-          border-image-slice: 1;
-          box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.4);
-          transition: all 0.25s linear;
-        }
-
-        .card-style:hover {
-          box-shadow: -1px 10px 29px 0px rgba(0, 0, 0, 0.8);
-        }
-
-        .card-text {
-          padding: 20px;
-        }
-
-        .karty {
-          color: #e5e4e2;
-        }
-
-        .footer {
-          position: fixed;
-          left: 0;
-          bottom: 0;
-          width: 100%;
-          background-color: #222;
-          color: white;
-          text-align: center;
-        }
-      </style>
+      
      
-
-
-
-  </main>
-  <div class="footer">
-    <p>Prihlásený učiteľ: <?php echo $_SESSION['fullname']; ?></p>
-  </div>
-
-  <?php
+      <?php
 // Assuming you have already established a database connection
 require_once('config.php');
 
@@ -321,11 +223,7 @@ if ($result) {
 ?>
 
 <style>
-    body, html {
-        margin: 0;
-        padding: 0;
-        
-    }
+   
 
   
 
@@ -612,6 +510,48 @@ echo '</table>';
 <form method="post" action="" class="center">
     <input type="submit" name="export_csv" value="Export do CSV" class="custom-button">
 </form>
+
+
+  </main>
+ 
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer-section">
+    <div id="max-width-footer">
+      <div class="footer-info">
+        <p>Samuel Michalčík</p>
+        <p>Jakub Taňkoš</p>
+        <p>Tomáš Jenčík</p>
+        <p>Martin Hajdučko</p>
+      </div>
+      <div id="icon-container">
+        <img id="footer-icon" src="./client/media/logos/favicon.jpg" alt="Logo"></img>
+      </div>
+      <div class="footer-info">
+        <address>
+          <ul>
+            <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xmichalciks@stuba.sk">xmichalciks@stuba.sk</a></li>
+            <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xtankos@stuba.sk">xtankos@stuba.sk</a></li>
+            <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xjencikt@stuba.sk">xjencik@stuba.sk</a></li>
+            <li class="footer-contact-item"><a class="footer-contact-link" href="mailto:xhajducko@stuba.sk">xhajducko@stuba.sk</a></li>
+          </ul>
+        </address>
+      </div>
+    </div>
+  </footer>
+  <footer id="footer-bar">
+    <p>&copy; 2023 MATHEX </p>
+  </footer>
+  <main>
+
+
+
+
+    
+
+ 
 
 
 </html>
