@@ -84,14 +84,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 --selection-background-color: lightgoldenrodyellow;
                                 --selection-color: darkblue;
                                 " id="formula"></math-field>
-                            <button id="check">Odoslať odpoveď</button>
+                            <button id="check" data-task-id="<?php echo $taskId; ?>">Odoslať odpoveď</button>
+                            <!-- <label>v Latexe</label>
+                            <textarea name="latex" id="latex" cols="30" rows="2"></textarea> -->
                         </div>
                         
                 <?php
                     } else if ($image != null) {
                         echo "Question: $question<br>";
                         $fileName = basename($image);
-                        echo "<img src='$fileName'><br>";
+                        echo "<img src='./client/media/images/$fileName'><br>";
                         ?>
                         <div class="row">
                             <label>Odpoveď</label>
@@ -106,9 +108,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 --selection-background-color: lightgoldenrodyellow;
                                 --selection-color: darkblue;
                                 " id="formula"></math-field>
-                            <button id="check">Odoslať odpoveď</button>
-                            <label>v Latexe</label>
-                            <textarea name="latex" id="latex" cols="30" rows="2"></textarea>
+                            <button id="check" data-task-id="<?php echo $taskId; ?>">Odoslať odpoveď</button>
+                            <!-- <label>v Latexe</label>
+                            <textarea name="latex" id="latex" cols="30" rows="2"></textarea> -->
                         </div>
                         
                         <?php
@@ -124,43 +126,72 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script>
-        const mf = document.getElementById("formula");
-        const latex = document.getElementById("latex");
+        // Select all math-fields
+        var mathFields = document.querySelectorAll('math-field');
 
-        mf.addEventListener("input", (val) => {
-            console.log(val.target.value);
-            latex.value = val.target.value;
-        });
-        latex.addEventListener("input", (val) => {
-            console.log(val.target.value);
-            mf.value = val.target.value;
-        });
+        // Select all buttons with id "check"
+        var checkButtons = document.querySelectorAll('#check');
 
-        document.getElementById('check').addEventListener('click', function() {
-            const userAnswer = mf.value;
-            const taskId = "<?php echo $taskId; ?>"; // Add this line to retrieve the value of $task from PHP
+        // Loop through math-fields and buttons to add event listeners
+        for (var i = 0; i < mathFields.length; i++) {
+            var mathField = mathFields[i];
+            var button = checkButtons[i];
 
-            fetch('check_answer.php', {
+            // Get the taskId for the current task
+            var taskId = button.dataset.taskId;
+            //console.log(taskId);
+
+            // Add an event listener to each button
+            button.addEventListener('click', function(event) {
+                var mf = event.target.parentNode.querySelector('math-field');
+                var latex = event.target.parentNode.querySelector('textarea[name="latex"]');
+
+                // Get the value of the corresponding math-field
+                var userAnswer = mf.getValue();
+
+                var alertDivs = document.querySelectorAll('.alert');
+                alertDivs.forEach(function(alertDiv) {
+                    alertDiv.remove();
+                });
+
+                fetch('check_answer.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: 'userAnswer=' + encodeURIComponent(userAnswer) + '&taskId=' + encodeURIComponent(taskId) // Add the 'task' key to the body
-            })
-            .then(response => response.json()) // Parse the response as JSON
-            .then(data => {
-                if (data.result === 'correct') {
-                    console.log('Correct!');
-                    console.log(data); // Log the entire response object
-                } else {
-                    console.log('Incorrect!');
-                    console.log(data); // Log the entire response object
-                }
-            })
-            .catch((error) => {
+                body: 'userAnswer=' + encodeURIComponent(userAnswer) + '&taskId=' + encodeURIComponent(taskId) // Use the taskId variable
+                })
+                .then(response => response.text()) // first get the raw response text
+                .then(text => {
+                    console.log('Raw response:', text); // log the raw response
+                    return JSON.parse(text); // then try to parse it as JSON
+                })
+                .then(data => {
+                    var alertDiv = document.createElement('div');
+                    alertDiv.classList.add('alert');
+                    if (data.result === 'correct') {
+                        console.log('Correct!');
+                        console.log(data); // Log the entire response object
+                        alertDiv.classList.add('alert-success');
+                        alertDiv.textContent = 'Správna odpoveď!';
+                        // Hide the submit button for a correct answer
+                        event.target.style.display = 'none';
+                    } else {
+                        console.log('Incorrect!');
+                        console.log(data); // Log the entire response object
+                        alertDiv.classList.add('alert-danger');
+                        alertDiv.textContent = 'Neprávna odpoveď!';
+                    }
+                    // Append the alert div after the button
+                    event.target.parentNode.appendChild(alertDiv);
+                })
+                .catch((error) => {
                 console.error('Error:', error);
+                });
             });
-        });
+
+           
+        }
 
 
 
