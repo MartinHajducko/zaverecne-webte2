@@ -264,7 +264,7 @@ $data = $stmt->fetchAll();
       }
   }
   ?>
-  <button type="submit" class="custom-button">Go to Page</button>
+  <button type="submit" class="custom-button">Generate tasks</button>
 </form>
 
       </div>
