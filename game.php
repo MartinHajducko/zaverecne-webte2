@@ -65,7 +65,9 @@
       </div>
       <h2 class="card-subtitle card-header">Inštrukcie pre študenta</h2>
       <div class="card-description-container card-body">
-        <p class="card-description mb-3"></p>
+        <p class="card-description mb-3">Študent sa taktiež ako učiteľ musí do aplikácie zaregistrovať a následne prihlásiť na svoju zabezpečenú stránku. Následne má študent k dispozícii
+          pre neho priradené úlohy, ktoré mu učiteľ zadával. Po vypracovaní úloh študent úlohy odovzdá a učiteľ ich následne vyhodnotí.
+        </p>
         <p class="card-description mb-3"></p>
         <p class="card-description mb-3"></p>
       </div>

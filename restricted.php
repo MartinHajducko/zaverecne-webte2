@@ -1,7 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 session_start();
 
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
@@ -141,7 +139,7 @@ if (isset($_POST['export_csv'])) {
               <div class="card-text">
 
                 <p class="ellipsis">
-                <h2 class="nazov">Vitaj učiteľ<?php echo $_SESSION['fullname']; ?></h2>
+                <h2 class="nazov">Vitaj učiteľ <?php echo $_SESSION['fullname']; ?></h2>
                 <br>
                 <p class="text">
                 </p>
@@ -322,21 +320,118 @@ if ($result) {
 }
 ?>
 
-<!-- Display the variants in a form -->
-<form method="POST" action="restricted.php">
-    <?php foreach ($variants as $variant): ?>
-        <label>
-            <input type="checkbox" name="variant[]" value="<?php echo $variant; ?>">
-            <?php echo $variant; ?>
-        </label>
-        <br>
-    <?php endforeach; ?>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        
+    }
 
-    <label for="date">Date:</label>
-    <input type="date" id="date" name="date" required>
-    <br>
-    <input type="submit" value="Submit">
-</form>
+  
+
+    .custom-button {
+        display: block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        background-color: #4CAF50;
+        color: #FFFFFF;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .custom-button:hover {
+        background-color: #45a049;
+    }
+</style>
+<style>
+    /* Skryť vstavané šípky v poli typu date */
+    input[type="date"]::-webkit-inner-spin-button,
+    input[type="date"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Vlastné štýly pre vstup typu date */
+    .custom-date-input {
+        display: inline-block;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: none;
+        transition: border-color 0.3s;
+    }
+
+    .custom-date-input:focus {
+        border-color: #4CAF50;
+        outline: none;
+    }
+</style>
+
+
+<style>
+    /* Skryť predvolený vzhľad checkboxu */
+    input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        vertical-align: middle;
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    /* Vlastné štýly pre checkbox */
+    input[type="checkbox"]:checked {
+        background-color: #4CAF50;
+    }
+
+    input[type="checkbox"]:checked:before {
+        content: "\2713";
+        display: block;
+        color: #fff;
+        text-align: center;
+        font-size: 14px;
+        line-height: 18px;
+    }
+</style>
+
+
+
+
+<div class="center">
+    <!-- Display the variants in a form -->
+    <form method="POST" action="restricted.php">
+        <?php foreach ($variants as $variant): ?>
+            <label>
+                <input type="checkbox" name="variant[]" value="<?php echo $variant; ?>">
+                <?php echo $variant; ?>
+            </label>
+            <br>
+        <?php endforeach; ?>
+
+     
+        <input type="date" id="date" name="date" required class="custom-date-input">
+        <br>
+        <input type="submit" value="Submit" class="custom-button">
+    </form>
+
+    <button id="latexButton" class="custom-button">Download Tasks</button>
+</div>
 
 <?php
 // Assuming you have already established a PDO database connection
@@ -367,14 +462,14 @@ foreach ($selectedVariants as $variant) {
 
 // Check if all updates were successful
 if ($result) {
-    echo "Variants updated successfully!";
+    //echo "Variants updated successfully!";
 } else {
     echo "Error updating variants: " . $stmt->errorInfo()[2];
 }
 ?>
 
 
-<button id="latexButton">Download Tasks</button>
+
 
 <script>
   // Function to handle button click
@@ -432,15 +527,25 @@ table tr:hover {
   margin-top: 20px;
 }
 
-.center input[type="submit"] {
-  margin-bottom: 80px;
-  padding: 10px 20px; 
-  font-size: 16px; 
-  background-color: #4CAF50; 
-  color: white; 
-  border: none; 
-  cursor: pointer; 
-}
+
+.custom-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        background-color: #ccc;
+        color: #222;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .custom-button:hover {
+        background-color: #f9f9f9;
+    }
 </style>
 <script>
 function sortTable(n) {
@@ -484,7 +589,7 @@ function sortTable(n) {
 
 <?php
 echo '<table id="myTable">';
-echo '<tr><th onclick="sortTable(0)">ID</th><th onclick="sortTable(1)">First Name</th><th onclick="sortTable(2)">Last Name</th><th onclick="sortTable(3)">Email</th><th onclick="sortTable(4)">Login</th></tr>';
+echo '<tr><th onclick="sortTable(0)">ID</th><th onclick="sortTable(1)">Meno</th><th onclick="sortTable(2)">Priezvisko</th><th onclick="sortTable(3)">Email</th><th onclick="sortTable(4)">Login</th></tr>';
 
 foreach ($results as $row) {
     $fullName = $row['fullname'];
@@ -504,9 +609,8 @@ foreach ($results as $row) {
 echo '</table>';
 ?>
 
-
 <form method="post" action="" class="center">
-    <input type="submit" name="export_csv" value="Export to CSV">
+    <input type="submit" name="export_csv" value="Export do CSV" class="custom-button">
 </form>
 
 
